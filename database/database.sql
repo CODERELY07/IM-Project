@@ -16,3 +16,19 @@ Create Table users(
     Create_At TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (User_Id)
 )
+--create Student Table
+CREATE TABLE student(
+	Student_Id INT NOT NULL AUTO_INCREMENT,
+    Section VARCHAR(10) NOT NULL,
+    YEAR_LEVEL VARCHAR(10) NOT NULL,
+    EnrollmendDate DATE NOT NULL,
+    STATUS VARCHAR(100) NOT NULL,
+    PRIMARY KEY(Student_Id)
+)
+
+--create Instructor Table
+CREATE TABLE instructor(
+    Instructor_Id INT NOT NULL AUTO_INCREMENT,
+    Department VARCHAR(100) NOT NULL,
+    PRIMARY KEY(Instructor_Id)
+)
