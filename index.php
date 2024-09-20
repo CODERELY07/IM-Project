@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <button><a href="./Components/Register/index.php">Register</a></button>
+    <button><a href="./Components/Register/register.php">Register</a></button>
 </body>
 </html>

@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,21 +44,28 @@
         <p>If you’re a <strong>Student</strong>, you’re about to embark on an exciting journey filled with learning, friendship, and discovery. Explore our resources, connect with your peers, and make the most of your educational experience.</p>
 
         <p>If you’re an <strong>Instructor</strong>, you are an essential part of our students’ growth and development. Your passion for teaching and dedication to nurturing young minds help create a vibrant learning environment.</p>
+        
         <input type="button" value="Student" onclick="toggleButton('student')" id="student_btn">
         <input type="button" value="Instructor"  id="instructor_btn" onclick="toggleButton('instructor')">  
-        <input type="checkbox" name="user_role" id="student" class="hide"> 
-        <input type="checkbox" name="user_role" id="instructor" class="hide"> 
+
+        <input type="checkbox" value="Student" name="user_role" id="student" class="hide"> 
+        <input type="checkbox" value="Instructor" name="user_role" id="instructor" class="hide"> 
+
         <br><br>
-        <input type="button" id="next" name="next" class="next btn btn-success" value="Next" />
+        <input type="button" id="next" name="next" class="next btn btn-success" value="Next" />        
     </fieldset>
     <fieldset>
+        <?php
+            echo $_SESSION['user_role'];
+          
+        ?>
         <h2>User Registration</h2>
         <p>Please fill out the form below to create your account. Make sure to provide accurate information as it will be used for account verification and communication.</p>
-        <div class="form-group">
+        <!-- <div class="form-group">
                 <label for="first_name">First Name:</label>
                 <input type="text" class="form-control" id="first_name" name="first_name" required>
-        </div>
-        <div class="form-group">
+        </div> -->
+        <!-- <div class="form-group">
             <label for="last_name">Last Name:</label>
             <input type="text" class="form-control" id="last_name" name="last_name" required>
         </div>
@@ -83,13 +93,11 @@
         <div class="form-group">
             <label for="date_of_birth">Date of Birth:</label>
             <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
-        </div>
-        <div class="form-group">
-            <label for="profile_picture">Profile Picture:</label>
-            <input type="file" class="form-control" id="profile_picture" name="profile_picture" accept="image/*" required>
-        </div>
-        <input type="button" name="previous" class="previous btn btn-default" value="Previous" />    
+        </div> -->
+       
+        <input type="button" name="next" class="previous btn btn-default" value="Previous" />    
         <input type="" name="next" class="next btn btn-success" value="Next" />
+    
     </fieldset>
     <fieldset>
         <h2>User Registration</h2>
@@ -102,7 +110,7 @@
             <label for="password">Password:</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <input type="button" name="previous" class="previous btn btn-default" value="Previous" />
+        <input type="button" name="next" class="previous btn btn-default" value="Previous" />
         <input type="submit" name="submit" class="btn btn-info" value="Submit" />
     </fieldset>
     </form>
@@ -208,6 +216,22 @@
                     $("#regiration_form").submit(); 
                 }
             });
+
+            $('#next').click(function(){
+                var user_role = $('input[name="user_role"]:checked').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: 'process.php',
+                    data: {dataInput: user_role},
+                    success: function(data){
+                        console.log(data);
+                    },
+                    error: function(){
+                        console.log("Error");
+                    }
+                })
+            })
         });
     </script>
     
