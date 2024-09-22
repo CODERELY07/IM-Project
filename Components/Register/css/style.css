@@ -18,3 +18,10 @@ input[type="checkbox"].hide{
 #regiration_form{
     margin-top:100px;
 }
+.alert{
+    border: none;
+    background-color: none;
+    background: none;
+    color: rgb(238, 14, 14);
+    margin-bottom: 10px;
+}

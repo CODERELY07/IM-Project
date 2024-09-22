@@ -13,7 +13,7 @@
         $date_of_birth = htmlspecialchars($_POST['date_of_birth']);
         $email = htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['password']);
-
+        
         if($user_role && $first_name && $last_name && $gender && $age && $contact_number && $address && $date_of_birth && $email && $password){
             $password = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO users(First_Name, Last_Name, Gender, Age, Contact_Number,Address,Email,Date_Of_Birth,Password)

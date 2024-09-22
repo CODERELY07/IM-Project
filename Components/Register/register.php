@@ -10,12 +10,10 @@
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css?=v<?php echo time()?>">
 </head>
 <body class="container">
-    <div class="alert alert-danger alert-dismissible fade hide" role="alert" id="myAlert">
-
-    </div>
+    
     <form id="regiration_form" novalidate action="action.php"  method="post">
     <fieldset>
         <h2>Select Your Role in Our School Community</h2>
@@ -27,6 +25,8 @@
         
         <input type="button" value="Student" onclick="toggleButton('student')" id="student_btn">
         <input type="button" value="Instructor"  id="instructor_btn" onclick="toggleButton('instructor')">  
+        <p id="role"></p>
+        <p class="error-message"></p>
         <input type="checkbox" value="student" name="user_role" id="student" class="hide"> 
         <input type="checkbox" value="instructor" name="user_role" id="instructor" class="hide"> 
         <br><br>
@@ -36,40 +36,59 @@
         <h2>User Registration</h2>
         <p>Please fill out the form below to create your account. Make sure to provide accurate information as it will be used for account verification and communication.</p>
         <div id="instructor_specific_fields" style="display: none;">
-            <h3>Student Information</h3>
-            <select name="" id="" class="form-group">
+            <h3>Intructor Information</h3>
+            <label for="">Department</label>
+            <select name="department" id="s" class="form-group">
                 <option value=""></option>
-                <option value="">BSIT</option>
-                <option value="">BSCS</option>
+                <option value="">CAS</option>
+                <option value="">CCS</option>
             </select>
-          
+            <p class="error-message"></p>
         </div>
         <div id="student_specific_fields" style="display: none;">
             <h3>Student Information</h3>
+            <label for="">Program</label>
+            <div>
+                <select name="program" id="program" class="form-group">
+                    <option value=""></option>
+                        <option value="">BSIT</option>
+                        <option value="">BSCS</option>
+                </select>
+                <p class="error-message"></p>
+            </div>
             <div class="form-group">
                 <label for="section">Section:</label>
                 <input type="text" class="form-control" id="section" name="section" required>
+                <p class="error-message"></p>
             </div>
+            <p class="error-message"></p>
             <div class="form-group">
                 <label for="year_level">Year Level:</label>
                 <input type="text" class="form-control" id="year_level" name="year_level" required>
+                <p class="error-message"></p>
             </div>
+           
             <div class="form-group">
                 <label for="enrollment_date">Enrollment Date:</label>
                 <input type="date" class="form-control" id="enrollment_date" name="enrollment_date" required>
+                <p class="error-message"></p>
             </div>
+          
             <div class="form-group">
                 <label for="status">Status:</label>
                 <input type="text" class="form-control" id="status" name="status" required>
+                <p class="error-message"></p>
             </div>
         </div>
         <div class="form-group">
                 <label for="first_name">First Name:</label>
                 <input type="text" class="form-control" id="first_name" name="first_name" required>
+                <p class="error-message"></p>
         </div> 
          <div class="form-group">
             <label for="last_name">Last Name:</label>
             <input type="text" class="form-control" id="last_name" name="last_name" required>
+            <p class="error-message"></p>
         </div>
         <div class="form-group">
             <label for="gender">Gender:</label>
@@ -79,22 +98,27 @@
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
             </select>
+            <p class="error-message"></p>
         </div>
         <div class="form-group">
             <label for="age">Age:</label>
             <input type="number" class="form-control" id="age" name="age" required>
+            <p class="error-message"></p>
         </div>
         <div class="form-group">
             <label for="contact_number">Contact Number:</label>
             <input type="text" class="form-control" id="contact_number" name="contact_number" required>
+            <p class="error-message"></p>
         </div>
         <div class="form-group">
             <label for="address">Address:</label>
             <input type="text" class="form-control" id="address" name="address" required>
+            <p class="error-message"></p>
         </div>
         <div class="form-group">
             <label for="date_of_birth">Date of Birth:</label>
             <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
+            <p class="error-message"></p>
         </div>
         <input type="button" name="next" class="previous btn btn-default" value="Previous" />    
         <input type="" name="next" class="next btn btn-success" value="Next" />
@@ -105,10 +129,12 @@
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" name="email" required>
+            <p class="error-message"></p>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" class="form-control" id="password" name="password" required>
+            <p class="error-message"></p>
         </div>
         <input type="button" name="next" class="previous btn btn-default" value="Previous" />
         <input type="submit" name="submit" class="btn btn-info" value="Submit" />
