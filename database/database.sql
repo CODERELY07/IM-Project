@@ -20,9 +20,10 @@ Create Table users(
 CREATE TABLE student(
 	Student_Id INT NOT NULL AUTO_INCREMENT,
     Section VARCHAR(10) NOT NULL,
-    YEAR_LEVEL VARCHAR(10) NOT NULL,
-    EnrollmendDate DATE NOT NULL,
-    STATUS VARCHAR(100) NOT NULL,
+    Program VARCHAR(100) NOT NULL,
+    Year_Level VARCHAR(10) NOT NULL,
+    Enrollment_Date DATE NOT NULL,
+    Status VARCHAR(100) NOT NULL,
     PRIMARY KEY(Student_Id)
 )
 

@@ -26,7 +26,7 @@ function showAlert(message, nameAttr = "") {
   } else {
     const formattedName = formatString(nameAttr);
     const fullMessage = formattedName ? `${message} ${formattedName}` : message;
-    console.log(`#${nameAttr}`);
+    // console.log(`#${nameAttr}`);
     $(`#${nameAttr}`).siblings(".error-message").html(fullMessage);
   }
 }
@@ -38,7 +38,6 @@ function formatString(str) {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 }
-
 $(document).ready(function () {
   var current_step, next_step;
 
@@ -46,36 +45,53 @@ $(document).ready(function () {
     current_step = $(this).parent();
     var allFilled = true;
 
-    current_step.find("input[required], select[required]").each(function () {
-      if ($(this).val() === "") {
-        allFilled = false;
-        $(this).addClass("is-invalid");
-      } else {
-        $(this).removeClass("is-invalid");
-      }
-
-      showAlert("Please enter a ", "section");
-      showAlert("Please enter a ", "year_level");
-      showAlert("Please select a valid ", "enrollment_date");
-      showAlert("Please select a valid ", "program");
-      showAlert("Please enter a valid ", "status");
-      showAlert("Please enter a valid ", "first_name");
-      showAlert("Please enter a valid ", "last_name");
-      showAlert("Please enter a valid ", "age");
-      showAlert("Please select a valid ", "gender");
-      showAlert("Please enter a valid ", "contact_number");
-      showAlert("Please enter a valid ", "address");
-      showAlert("Please select a valid ", "date_of_birth");
-    });
-
-    if ($('input[name="user_role"]:checked').length === 0) {
+    // Check if a user role is selected
+    const userRole = $('input[name="user_role"]:checked');
+    if (userRole.length === 0) {
       showAlert("Please Select a ", "role");
-    } else if (!allFilled) {
+      allFilled = false; // Ensure allFilled is false
+    }
+
+    if ($(this).parent().attr("id") === "second_step") {
+      if (userRole.val() === "student") {
+        console.log($("#student_specific_fields input[required]"));
+        $(
+          "#student_specific_fields input[required], #all input[required], #student_specific_fields select[required], #all select[required]"
+        ).each(function () {
+          if ($(this).val() === "") {
+            allFilled = false;
+            $(this).addClass("is-invalid");
+            showAlert("Please enter a ", $(this).attr("id"));
+          } else {
+            $(this).removeClass("is-invalid");
+            showAlert("Please enter a ", $(this).attr("id"));
+          }
+        });
+      } else if (userRole.val() === "instructor") {
+        $(
+          "#instructor_specific_fields input[required], #all input[required],#instructor_specific_fields select[required], #all select[required]"
+        ).each(function () {
+          if ($(this).val() === "") {
+            allFilled = false;
+            $(this).addClass("is-invalid");
+            showAlert("Please enter a ", $(this).attr("id"));
+          } else {
+            $(this).removeClass("is-invalid");
+            showAlert("Please enter a ", $(this).attr("id"));
+          }
+        });
+      } else {
+        console.log("invalid");
+      }
+    }
+    if (!allFilled) {
+      console.log(allFilled);
       return false;
     } else {
       next_step = current_step.next();
       next_step.show();
       current_step.hide();
+      console.log(allFilled);
     }
   });
 
@@ -85,7 +101,8 @@ $(document).ready(function () {
     next_step.show();
     current_step.hide();
   });
-  //validate email and password
+
+  // Validate email and password then submit
   $("input[type='submit']").click(function (event) {
     var isValid = true;
     var email = $("#email").val();

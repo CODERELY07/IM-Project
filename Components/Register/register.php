@@ -32,27 +32,28 @@
         <br><br>
         <input type="button" id="next" name="next" class="next btn btn-success" value="Next" />   
     </fieldset>
-    <fieldset>
+    <fieldset id="second_step">
         <h2>User Registration</h2>
         <p>Please fill out the form below to create your account. Make sure to provide accurate information as it will be used for account verification and communication.</p>
-        <div id="instructor_specific_fields" style="display: none;">
+        <div id="instructor_specific_fields" style="display:none ;">
             <h3>Intructor Information</h3>
             <label for="">Department</label>
-            <select name="department" id="s" class="form-group">
+            <select name="department" id="s" class="form-control" required>
                 <option value=""></option>
-                <option value="">CAS</option>
-                <option value="">CCS</option>
+                <option value="CAS">CAS</option>
+                <option value="CCS">CCS</option>
             </select>
             <p class="error-message"></p>
         </div>
-        <div id="student_specific_fields" style="display: none;">
+       
+        <div id="student_specific_fields" style="display:none ;">
             <h3>Student Information</h3>
             <label for="">Program</label>
-            <div>
-                <select name="program" id="program" class="form-group">
-                    <option value=""></option>
-                        <option value="">BSIT</option>
-                        <option value="">BSCS</option>
+            <div class="form-group">
+                <select name="program" id="program" class="form-control" required>
+                        <option value=""></option>
+                        <option value="BSIT">BSIT</option>
+                        <option value="BSCS">BSCS</option>
                 </select>
                 <p class="error-message"></p>
             </div>
@@ -80,45 +81,47 @@
                 <p class="error-message"></p>
             </div>
         </div>
-        <div class="form-group">
-                <label for="first_name">First Name:</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" required>
+        <div id="all">
+            <div class="form-group">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" required>
+                    <p class="error-message"></p>
+            </div> 
+            <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" required>
                 <p class="error-message"></p>
-        </div> 
-         <div class="form-group">
-            <label for="last_name">Last Name:</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" required>
-            <p class="error-message"></p>
-        </div>
-        <div class="form-group">
-            <label for="gender">Gender:</label>
-            <select class="form-control" id="gender" name="gender" required>
-                <option value=""></option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-            </select>
-            <p class="error-message"></p>
-        </div>
-        <div class="form-group">
-            <label for="age">Age:</label>
-            <input type="number" class="form-control" id="age" name="age" required>
-            <p class="error-message"></p>
-        </div>
-        <div class="form-group">
-            <label for="contact_number">Contact Number:</label>
-            <input type="text" class="form-control" id="contact_number" name="contact_number" required>
-            <p class="error-message"></p>
-        </div>
-        <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" class="form-control" id="address" name="address" required>
-            <p class="error-message"></p>
-        </div>
-        <div class="form-group">
-            <label for="date_of_birth">Date of Birth:</label>
-            <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
-            <p class="error-message"></p>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select class="form-control" id="gender" name="gender" required>
+                    <option value=""></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <p class="error-message"></p>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" class="form-control" id="age" name="age" required>
+                <p class="error-message"></p>
+            </div>
+            <div class="form-group">
+                <label for="contact_number">Contact Number:</label>
+                <input type="text" class="form-control" id="contact_number" name="contact_number" required>
+                <p class="error-message"></p>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+                <p class="error-message"></p>
+            </div>
+            <div class="form-group">
+                <label for="date_of_birth">Date of Birth:</label>
+                <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
+                <p class="error-message"></p>
+            </div>  
         </div>
         <input type="button" name="next" class="previous btn btn-default" value="Previous" />    
         <input type="" name="next" class="next btn btn-success" value="Next" />
