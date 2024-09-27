@@ -20,6 +20,24 @@ function toggleButton(selected) {
   }
 }
 
+//dynamicallu update
+$('#department').change(function(){
+  var departmentId = $(this).val();
+  if(departmentId){
+    $.ajax({
+      type:"POST",
+      url: "fetch_data.php",
+      data:{departmentId: departmentId},
+      success:function(data){
+        $('#program').empty().append('<option value=""></option>').append(data);
+      }
+    })
+  }else{
+    $('#program').html('<option value="">Select Department First</option>');
+  }
+});
+
+
 function showAlert(message, nameAttr = "") {
   if ($(`#${nameAttr}`).val() != "") {
     $(`#${nameAttr}`).siblings(".error-message").html("");

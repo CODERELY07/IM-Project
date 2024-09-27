@@ -18,6 +18,6 @@
     
     $pdo = connect($host,$db,$user,$password);
 
-    if($pdo){
-        echo "connected to the $db successfully";
-    }
+    // if($pdo){
+    //     echo "connected to the $db successfully";
+    // }

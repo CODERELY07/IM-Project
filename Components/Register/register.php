@@ -35,25 +35,28 @@
     <fieldset id="second_step">
         <h2>User Registration</h2>
         <p>Please fill out the form below to create your account. Make sure to provide accurate information as it will be used for account verification and communication.</p>
-        <div id="instructor_specific_fields" style="display:none ;">
-            <h3>Intructor Information</h3>
-            <label for="">Department</label>
-            <select name="department" id="s" class="form-control" required>
+        <!-- <div id="instructor_specific_fields" style="display:none;"> -->
+         <!-- <h3>Instructor Information</h3> -->
+         <label for="department">Department</label>
+            <select name="department" id="department" class="form-control" required>
                 <option value=""></option>
-                <option value="CAS">CAS</option>
-                <option value="CCS">CCS</option>
+                <?php 
+                    $sql_department = "SELECT * FROM department";
+                    $pdo_department = $pdo->prepare($sql_department);
+                    $pdo_department->execute(); 
+                    while($row_department = $pdo_department->fetch()):
+                ?>
+                <option value="<?= $row_department['Department_Id']?>"><?= $row_department['Department_Name'] ?></option>
+                <?php endwhile; ?>
             </select>
             <p class="error-message"></p>
-        </div>
-       
+        <!-- </div> -->
         <div id="student_specific_fields" style="display:none ;">
             <h3>Student Information</h3>
             <label for="">Program</label>
             <div class="form-group">
                 <select name="program" id="program" class="form-control" required>
-                        <option value=""></option>
-                        <option value="BSIT">BSIT</option>
-                        <option value="BSCS">BSCS</option>
+                    <option value="">Select Department First</option>
                 </select>
                 <p class="error-message"></p>
             </div>
@@ -81,6 +84,8 @@
                 <p class="error-message"></p>
             </div>
         </div>
+       
+
         <div id="all">
             <div class="form-group">
                     <label for="first_name">First Name:</label>
