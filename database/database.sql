@@ -37,14 +37,6 @@ CREATE TABLE instructor(
     PRIMARY KEY(Instructor_Id),
     FOREIGN KEY(User_Id) REFERENCES users(User_Id)
 )
-CREATE TABLE sections(
-    Section_Id INT NOT NULL AUTO_INCREMENT,
-    Year INT NOT NULL,
-    Section_Name VARCHAR(100) NOT NULL,
-    UNIQUE (Year,Section_Name),
-    PRIMARY KEY(Section_Id)
-)
-
 CREATE TABLE department(
     Department_Id INT NOT NULL,
     Department_Name VARCHAR(100) NOT NULL,
@@ -57,19 +49,35 @@ CREATE TABLE program(
     PRIMARY KEY(Program_Id),
     FOREIGN KEY(Department_Id) REFERENCES department(Department_Id)
 )
--- Insert data into sections
-INSERT INTO sections (Year, Section_Name) VALUES
-(2024, 'A'),
-(2024, 'B'),
-(2024, 'C'),
-(2024, 'D'),
-(2024, 'E'),
-(2024, 'F'),
-(2024, 'G'),
-(2024, 'H'),
-(2024, 'I'),
-(2024, 'J');
+CREATE TABLE year_level(
+    Year_Level_Id INT NOT NULL AUTO_INCREMENT,
+    Year_Level VARCHAR(100) NOT NULL,
+    PRIMARY KEY(Year_Level_Id)
+)
+CREATE TABLE sections (
+    Section_Id INT NOT NULL AUTO_INCREMENT,
+    Year INT NOT NULL,
+    Program_Id INT,
+    Year_Level_Id INT,
+    Section_Name VARCHAR(100) NOT NULL,
+    FOREIGN KEY (Program_Id) REFERENCES program(Program_Id),
+    FOREIGN KEY (Year_Level_Id) REFERENCES year_level(Year_Level_Id),
+    PRIMARY KEY (Section_Id)
+);
 
+-- Insert data into sections
+INSERT INTO sections (Year, Section_Name, Program_Id, Year_Level_Id) VALUES
+(2024, 'A', 1, 1), (2024, 'A', 2, 1), (2024, 'A', 3, 1), (2024, 'A', 4, 1), (2024, 'A', 5, 2), (2024, 'A', 6, 2), (2024, 'A', 7, 3), (2024, 'A', 8, 3), (2024, 'A', 9, 4),
+(2023, 'B', 1, 1), (2024, 'B', 2, 1), (2024, 'B', 3, 2), (2024, 'B', 4, 2), (2024, 'B', 5, 3), (2024, 'B', 6, 3), (2024, 'B', 7, 4), (2024, 'B', 8, 4), (2024, 'B', 9, 4),
+(2024, 'C', 1, 1), (2024, 'C', 2, 2), (2024, 'C', 3, 3), (2024, 'C', 4, 4),
+(2024, 'D', 1, 1), (2024, 'D', 2, 2), (2024, 'D', 3, 3);
+
+
+INSERT INTO year_level (Year_Level) VALUES
+('First Year'), 
+('Second Year'), 
+('Third Year'), 
+('Fourth Year');
 
 INSERT INTO department (Department_Name) VALUES
 ('CCS'),

@@ -61,16 +61,22 @@
                 <p class="error-message"></p>
             </div>
             <div class="form-group">
+                <label for="year_level">Year Level:</label>
+                <select name="year_level" id="year_level" class="form-control">
+                    <option value="">Select Program First</option>
+                </select>
+                <p class="error-message"></p>
+            </div>
+
+            
+            <div class="form-group">
                 <label for="section">Section:</label>
-                <input type="text" class="form-control" id="section" name="section" required>
+                <select name="section" id="section" class="form-control" required> 
+                    <option value="">Select Year Level First</option>
+                </select>
                 <p class="error-message"></p>
             </div>
             <p class="error-message"></p>
-            <div class="form-group">
-                <label for="year_level">Year Level:</label>
-                <input type="text" class="form-control" id="year_level" name="year_level" required>
-                <p class="error-message"></p>
-            </div>
            
             <div class="form-group">
                 <label for="enrollment_date">Enrollment Date:</label>

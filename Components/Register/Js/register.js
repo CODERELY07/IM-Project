@@ -37,6 +37,60 @@ $('#department').change(function(){
   }
 });
 
+//this program and year level has compicated issue fix
+// $('#program').change(function(){
+//   var yearLevel =true;
+//   if(yearLevel==true){
+//     $.ajax({
+//       type:"POST",
+//       url: "fetch_data.php",
+//       data:{yearLevel: yearLevel},
+//       success:function(data){
+//         $('#year_level').empty().append('<option value=""></option>').append(data);
+//       }
+//     })
+//   }else{
+//     $('#section').html('<option value=""> SELECT Program First</option>');
+//   }
+// })
+
+// $('#year_level').change(function(){
+  
+//   var yearLevelId = $(this).val();
+//   var programId = $('#program').val();
+
+//   if(yearLevelId){
+//     $.ajax({
+//       type: 'POST',
+//       url: 'fetch_data.php',
+//       data: {yearLevelId: yearLevelId, programId: programId},
+//       success: function(data){
+//         $('#section').empty().append('<option value=""></option value').append(data);
+//       }
+//     })
+//   }else{
+//     $('#section').html('<option value=""> SELECT Program First</option>');
+//   }
+
+// });
+// $('#section').change(function(){
+//   var programId = $(this).val();
+
+//   if(programId){
+//     $.ajax({
+//       type:"POST",
+//       url: "fetch_data.php",
+//       data:{programId, programId},
+//       success : function(data){
+//         $('#section').empty().append('<option value=""></option value').append(data);
+//       }
+//     })
+//   }else{
+//     $('#section').html('<option value=""> SELECT Program First</option>');
+//   }
+// })
+
+
 
 function showAlert(message, nameAttr = "") {
   if ($(`#${nameAttr}`).val() != "") {
